@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+    /* justify x axle */
+    /* align y axle */ 
+
+@media (min-width: 1024px) {
+
+    .generator-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}

@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgba(157, 193, 219, 0.302);
+}
+
+.nav-container{
+    background-color: rgb(179, 198, 255);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+.nav-list{
+    display: flex;
+    gap: 10px;
+
+    width: 100vw;
+}
+
+
+.nav-list > li{
+flex-grow: 1;
+
+font-size: 1.5em;
+
+padding-inline-start: 10px;
+padding: 10px 10px;
+
+}
+
+a{
+    text-decoration: none;
+
+}
+
+.nav-list > li:hover{
+    /* cursor: pointer; */
+    background-color: rgb(111, 111, 182);
+
+}
+
+
+/* .logo{
+    flex-grow: 2;
+
+    font-size: 300px;
+
+} */
