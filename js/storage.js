@@ -12,4 +12,5 @@ function loadFromStorage(key) {
 
 function clearFromStorage(key) {
   localStorage.removeItem(key)
+  localStorage.removeItem('currentMeme')
 }
