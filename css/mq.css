@@ -4,7 +4,7 @@
     /* justify x axle */
     /* align y axle */ 
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
 
     .generator-container{
         display: grid;
