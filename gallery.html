@@ -15,7 +15,7 @@
 
 <nav class="nav-container">
     <ul class="nav-list">
-        <li><a href="http://127.0.0.1:5500/index.html">Home</a></li>
+        <li><a href="http://127.0.0.1:5500/index.html" onclick="clearFromStorage('selected')">Home</a></li>
         <li><a href="http://127.0.0.1:5500/gallery.html">Gallery</a></li>
         <li><a href="http://127.0.0.1:5500/about.html">About</a></li>
     </ul>
@@ -24,10 +24,12 @@
 <h1>Gallery</h1>
     
     <div class="gallery-container">
-
+        <!-- <img src="meme-imgs/1.jpg" alt="" onclick="onSelectMEME()" style="cursor: pointer;"> -->
     </div>
     
+    <script src="js/storage.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/service.js"></script>
     <script src="js/gallery.js"></script>
 </body>
 

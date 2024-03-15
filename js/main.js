@@ -1,39 +1,5 @@
 'use strict'
 
-let gId = 0
-
-let gImgs = [
-  {
-    id: gId++,
-    url: 'meme-imgs/1.jpg',
-    keywords: ['funny', 'sarcasm'],
-  },
-  {
-    id: gId++,
-    url: 'meme-imgs/2.jpg',
-    keywords: ['cute', 'animal'],
-  },
-  {
-    id: gId++,
-    url: 'meme-imgs/3.jpg',
-    keywords: ['cute', 'animal'],
-  },
-]
-
-let gMeme = {
-  selectedImgId: getRandomIntInclusive(1, gImgs.length),
-  selectedLineIdx: 0,
-  lines: [
-    {
-      txt: 'Insert Txt',
-      size: 20,
-      color: 'red',
-    },
-  ],
-}
-
-let gKeywordSearchCountMap = { funny: 10, cute: 12, sarcasm: 5 }
-
 let gElCanvas
 let gCtx
 
@@ -55,7 +21,14 @@ function resizeCanvas() {
 }
 
 function drawImg() {
+  console.log(gIsSelected)
+  if (loadFromStorage('selected') !== true) {
+    gMeme = createMeme()
+  } else {
+    gMeme = loadFromStorage('selectedMeme')
+  }
   const img = new Image()
+  console.log(gMeme)
   const { selectedImgId } = gMeme
   img.src = `meme-imgs/${selectedImgId}.jpg`
   //   img.src = `meme-imgs/${selectedImgId}.jpg`
