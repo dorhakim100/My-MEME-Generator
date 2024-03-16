@@ -131,3 +131,20 @@ function onChangeColor(elColor) {
   gFillColor = elColor.value
   addText()
 }
+
+function onChangeSize(elBtn) {
+  const operator = elBtn.id
+  console.log(operator)
+
+  switch (operator) {
+    case 'increase':
+      gFontSize += 10
+      break
+    case 'decrease':
+      gFontSize -= 10
+      break
+  }
+  clearCanvas()
+  drawImg(gCanvasContainerWidth)
+  addText()
+}

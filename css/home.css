@@ -12,4 +12,13 @@ width: minmax(100px, 200px);
     padding: 3px;
 
     border-radius: 5px;
+
+    position: relative;
+    bottom: 25px;
+    
+}
+
+.text-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
 }

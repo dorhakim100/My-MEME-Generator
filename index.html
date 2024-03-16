@@ -30,18 +30,28 @@
                 <canvas class="canvas">
 
                 </canvas>
+                <a class="download-btn" href="" onclick="onDownloadMeme(this)" download="my-meme">Download</a>
         </div>
         <!-- <div >
             <img src="meme-imgs/meme-imgs (square)/1.jpg" alt="">
         </div> -->
         <div class="user-interface">
             <h2>Bla Bla</h2>
-            <label for="text">Text:</label>
-            <input class="input text" oninput="onChangeMemeText()" type="text">
+            <div class="text-container">
+                <div class="text-input">
+                    <label for="text">Text:</label>
+                    <input class="input text" oninput="onChangeMemeText()" type="text">
+                    <button onclick="onClearCanvas()" style="display: block;">Clear Text</button>
+                </div>
+                <div class="size-container">
+
+                    <button onclick="onChangeSize(this)" id="decrease"><img src="helpers/decrease-font.png" alt="" style="width: 20px; background-color: none;"></button>
+                    <input type="range">
+                    <button onclick="onChangeSize(this)" id="increase"><img src="helpers/increase-font.png" alt="" style="width: 20px; background-color: none;"></button>
+                </div>
+            </div>
             <label for="color">Color:</label>
             <input class="input color" onchange="onChangeColor(this)" type="color" name="" id="">
-            <button onclick="onClearCanvas()">Clear Text</button>
-            <a class="download-btn" href="" onclick="onDownloadMeme(this)" download="my-meme">Download</a>
             
         </div>
     </div>
