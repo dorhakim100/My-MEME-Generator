@@ -98,3 +98,10 @@ function onChangeMemeText() {
   drawImg(gCanvasContainerWidth)
   //   addText(elInput.value)
 }
+
+function onDownloadMeme(elLink) {
+  let imgContent
+  elLink.innerText = 'Download PNG'
+  imgContent = gElCanvas.toDataURL('image/png')
+  elLink.href = imgContent
+}
