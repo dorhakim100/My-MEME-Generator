@@ -1,2 +1,6 @@
 @import url(mq.css);
 
+@font-face {
+    font-family: body;
+    src: url('fonts/Grandstander-Italic-VariableFont_wght.woff');
+}

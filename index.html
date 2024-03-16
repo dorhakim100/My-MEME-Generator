@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TITLE HERE</title>
-    <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/home.css">
 
 </head>
@@ -39,14 +39,19 @@
             <h2>Bla Bla</h2>
             <div class="text-container">
                 <div class="text-input">
-                    <label for="text">Text:</label>
-                    <input class="input text" oninput="onChangeMemeText()" type="text">
-                    <button onclick="onClearCanvas()" style="display: block;">Clear Text</button>
+                    <div>
+                        <label for="text">Text:</label>
+                        <input class="input text" oninput="onChangeMemeText()" type="text">
+                    </div>
+
+                    <button onclick="onAddLine()">Add Text</button>
+                    <button onclick="onClearCanvas()">Clear Text</button>
+                    <button>switch</button>
                 </div>
                 <div class="size-container">
-
+                    <div class="font-size-display">120</div>
                     <button onclick="onChangeSize(this)" id="decrease"><img src="helpers/decrease-font.png" alt="" style="width: 20px; background-color: none;"></button>
-                    <input type="range">
+                    <input onchange="onChangeSizeRange(this)" class="input size-range" type="range" min="35" max="205" title="">
                     <button onclick="onChangeSize(this)" id="increase"><img src="helpers/increase-font.png" alt="" style="width: 20px; background-color: none;"></button>
                 </div>
             </div>

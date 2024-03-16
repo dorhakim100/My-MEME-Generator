@@ -4,7 +4,7 @@ let gElCanvas
 let gCtx
 
 let gText = 'Hello'
-let gFontSize = 85
+let gFontSize = 120
 
 let gColor = '#000000'
 let gFillColor = '#ffffff'
@@ -23,6 +23,7 @@ function init() {
   saveToStorage('currentMeme', gMeme)
 
   changeColorInput()
+  displayFontSize()
 }
 
 function resizeCanvas() {
@@ -68,6 +69,12 @@ function drawImg(containerWidth) {
 }
 
 function addText(x = gCanvasMiddle, y = 100) {
+  if (gMeme.lines.length > 1) {
+    getLineOption(1)
+  }
+
+  console.log(gText)
+
   gCtx.lineWidth = 3
   gCtx.strokeStyle = gColor
   //   const elColorSelect = document.querySelector('.color-select')
@@ -83,6 +90,16 @@ function addText(x = gCanvasMiddle, y = 100) {
 
   gCtx.fillText(gText, x, y)
   gCtx.strokeText(gText, x, y)
+
+  const { selectedLineIdx } = gMeme
+
+  console.log(selectedLineIdx)
+
+  gMeme.lines[selectedLineIdx].txt = gText
+  gMeme.lines[selectedLineIdx].size = gFontSize
+  gMeme.lines[selectedLineIdx].color = gFillColor
+
+  console.log(gMeme)
 }
 
 function clearCanvas() {
@@ -136,15 +153,59 @@ function onChangeSize(elBtn) {
   const operator = elBtn.id
   console.log(operator)
 
+  console.log(gFontSize)
   switch (operator) {
     case 'increase':
+      if (gFontSize >= 205) return
       gFontSize += 10
       break
     case 'decrease':
+      if (gFontSize <= 35) return
       gFontSize -= 10
       break
   }
+  console.log(gFontSize)
+
   clearCanvas()
   drawImg(gCanvasContainerWidth)
   addText()
+
+  const elInputRange = document.querySelector('.size-range')
+  elInputRange.value = gFontSize
+  const elSizeDisplay = document.querySelector('.font-size-display')
+  elSizeDisplay.innerText = gFontSize
+}
+
+function onChangeSizeRange(elInputRange) {
+  const fontSize = elInputRange.value
+  console.log(fontSize)
+  gFontSize = +fontSize
+  clearCanvas()
+  drawImg(gCanvasContainerWidth)
+  addText()
+
+  displayFontSize()
+  const elSizeDisplay = document.querySelector('.font-size-display')
+  elSizeDisplay.innerText = gFontSize
+}
+
+function displayFontSize() {
+  const elInputRange = document.querySelector('.size-range')
+  elInputRange.title = gFontSize
+}
+
+function onAddLine() {
+  const line = createLine()
+
+  gMeme.lines.push(createLine())
+
+  getLineOption(1)
+  addText(gCanvasMiddle, gCanvasContainerWidth - 100)
+}
+
+function getLineOption(lineIdx) {
+  gText = gMeme.lines[lineIdx].txt
+  gFontSize = gMeme.lines[lineIdx].size
+
+  gFillColor = gMeme.lines[lineIdx].color
 }

@@ -121,6 +121,16 @@ function createMeme(id = getRandomIntInclusive(1, gImgs.length)) {
   return meme
 }
 
+function createLine() {
+  const line = {
+    txt: 'Insert Txt',
+    size: 80,
+    color: '#ff0000',
+  }
+
+  return line
+}
+
 // function findMeme(meme) {
 //   const meme = gImgs.find((img) => meme.id === img.id)
 //   return meme
