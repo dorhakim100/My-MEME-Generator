@@ -83,12 +83,17 @@ function addText(x = gCanvasMiddle, y = 100) {
   gCtx.strokeText(gText, x, y)
 }
 
-function onChangeMemeText() {
-  //   console.log(loadFromStorage('currentMeme'))
+function clearCanvas() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
   gMeme = loadFromStorage('currentMeme')
+}
+
+function onChangeMemeText() {
+  //   console.log(loadFromStorage('currentMeme'))
   //   console.log(gMeme)
   //   drawImg()
+
+  clearCanvas()
 
   const elInput = document.querySelector('.text')
   gMeme.lines.txt = elInput.value
@@ -101,7 +106,13 @@ function onChangeMemeText() {
 
 function onDownloadMeme(elLink) {
   let imgContent
-  elLink.innerText = 'Download PNG'
+  // elLink.innerText = 'Download PNG'
   imgContent = gElCanvas.toDataURL('image/png')
   elLink.href = imgContent
+}
+
+function onClearCanvas() {
+  clearCanvas()
+  gText = ''
+  drawImg(gCanvasContainerWidth)
 }

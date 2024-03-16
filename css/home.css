@@ -4,3 +4,12 @@
 
 width: minmax(100px, 200px);
 }
+
+.download-btn{
+    background-color: rgb(233, 233, 233);
+    border: 1px solid rgb(37, 37, 37);
+
+    padding: 3px;
+
+    border-radius: 5px;
+}
