@@ -7,9 +7,12 @@ let gText = 'Hello'
 let gFontSize = 85
 
 let gColor = '#000000'
-let gFillColor = '#008000'
+let gFillColor = '#ffffff'
 
 let gCurrentMeme
+
+let gCanvasMiddle
+let gCanvasContainerWidth
 
 function init() {
   gElCanvas = document.querySelector('canvas')
@@ -25,11 +28,15 @@ function resizeCanvas() {
   // Changing the canvas dimension clears the canvas
   gElCanvas.width = gElContainer.clientWidth
   gElCanvas.height = gElContainer.clientWidth
+  gCanvasContainerWidth = gElContainer.clientWidth
 
-  //   console.log(gElCanvas.width, gElCanvas.height)
+  gCanvasMiddle = gElCanvas.width / 2
+  console.log(gElContainer)
+  console.log(gElCanvas.width, gElCanvas.height)
+  drawImg(gCanvasContainerWidth)
 }
 
-function drawImg() {
+function drawImg(containerWidth) {
   console.log(gIsSelected)
 
   if (loadFromStorage('selected') !== true) {
@@ -45,6 +52,7 @@ function drawImg() {
   }
   //   saveToStorage('currentMeme', gCurrentMeme)
   const img = new Image()
+  if (!containerWidth) containerWidth = img.naturalWidth
   console.log(gMeme)
   const { selectedImgId } = gMeme
   img.src = `meme-imgs/${selectedImgId}.jpg`
@@ -52,13 +60,13 @@ function drawImg() {
   console.log(img)
 
   img.onload = () => {
-    gCtx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight)
+    gCtx.drawImage(img, 0, 0, containerWidth, containerWidth)
     addText()
   }
 }
 
-function addText(x = 100, y = 100) {
-  gCtx.lineWidth = 2
+function addText(x = gCanvasMiddle, y = 100) {
+  gCtx.lineWidth = 3
   gCtx.strokeStyle = gColor
   //   const elColorSelect = document.querySelector('.color-select')
   //   elColorSelect.value = gColor
@@ -67,7 +75,7 @@ function addText(x = 100, y = 100) {
   //   const elColorFillSelect = document.querySelector('.fill-color-select')
   //   elColorFillSelect.value = gFillColor
 
-  gCtx.font = `${gFontSize}px Arial`
+  gCtx.font = `${gFontSize}px Arial Black`
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'middle'
 
@@ -87,6 +95,6 @@ function onChangeMemeText() {
   gText = elInput.value
   console.log(gMeme.lines.txt)
 
-  drawImg()
+  drawImg(gCanvasContainerWidth)
   //   addText(elInput.value)
 }

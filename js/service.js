@@ -5,18 +5,93 @@ let gId = 0
 let gImgs = [
   {
     id: ++gId,
-    url: 'meme-imgs/1.jpg',
+    url: `meme-imgs/${gId}.jpg`,
     keywords: ['funny', 'sarcasm'],
   },
   {
     id: ++gId,
-    url: 'meme-imgs/2.jpg',
+    url: `meme-imgs/${gId}.jpg`,
     keywords: ['cute', 'animal'],
   },
   {
     id: ++gId,
-    url: 'meme-imgs/3.jpg',
+    url: `meme-imgs/${gId}.jpg`,
     keywords: ['cute', 'animal'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['cute', 'animal'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['cute', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
+  },
+  {
+    id: ++gId,
+    url: `meme-imgs/${gId}.jpg`,
+    keywords: ['funny', 'sarcasm'],
   },
 ]
 
