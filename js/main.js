@@ -49,7 +49,7 @@ function resizeCanvas() {
 }
 
 function drawImg(containerWidth) {
-  // console.log(loadFromStorage('currentMeme'))
+  console.log(loadFromStorage('selected'))
 
   if (loadFromStorage('selected') !== true) {
     if (loadFromStorage('currentMeme')) {
@@ -61,8 +61,11 @@ function drawImg(containerWidth) {
   } else {
     console.log(gMeme)
     gMeme = loadFromStorage('selectedMeme')
+    console.log(gMeme)
     // gCurrentMeme = gMeme
     saveToStorage('currentMeme', gMeme)
+    saveToStorage('selected', false)
+    console.log(loadFromStorage('currentMeme'))
   }
 
   const img = new Image()
@@ -102,6 +105,8 @@ function clearCanvas() {
 }
 
 function onChangeMemeText() {
+  if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
+  console.log(gMeme)
   //   console.log(loadFromStorage('currentMeme'))
   //   console.log(gMeme)
   //   drawImg()
@@ -150,6 +155,7 @@ function onChangeColor(elColor) {
 }
 
 function onChangeSize(elBtn) {
+  if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
   const operator = elBtn.id
 
   const { selectedLineIdx } = gMeme
@@ -178,6 +184,7 @@ function onChangeSize(elBtn) {
 }
 
 function onChangeSizeRange(elInputRange) {
+  if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
   const { selectedLineIdx } = gMeme
   const fontSize = elInputRange.value
   gMeme.lines[selectedLineIdx].size = +fontSize
@@ -216,6 +223,7 @@ function getLineOption(lineIdx) {
 function renderMeme() {}
 
 function addTextt(line) {
+  if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
   console.log(gMeme.lines[line])
   let y
   if (line === 0) y = 100
