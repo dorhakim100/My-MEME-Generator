@@ -21,6 +21,8 @@ function init() {
 
   drawImg()
   saveToStorage('currentMeme', gMeme)
+
+  changeColorInput()
 }
 
 function resizeCanvas() {
@@ -115,4 +117,17 @@ function onClearCanvas() {
   clearCanvas()
   gText = ''
   drawImg(gCanvasContainerWidth)
+
+  const elTextInput = document.querySelector('.text')
+  elTextInput.value = ''
+}
+
+function changeColorInput() {
+  const elColorInput = document.querySelector('.color')
+  elColorInput.value = gFillColor
+}
+
+function onChangeColor(elColor) {
+  gFillColor = elColor.value
+  addText()
 }
