@@ -14,13 +14,22 @@ let gCurrentMeme
 let gCanvasMiddle
 let gCanvasContainerWidth
 
+// gMeme = loadFromStorage('currentMeme')
+// localStorage.removeItem('currentMeme')
 function init() {
+  // if (!loadFromStorage('currentMeme')) {
+  //   createMeme()
+  //   saveToStorage('currentMeme', gMeme)
+  // }
+  // if (!gMeme) {
+  //   gMeme = createMeme()
+  //   saveToStorage('currentMeme', gMeme)
+  // }
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
   resizeCanvas()
 
   drawImg()
-  saveToStorage('currentMeme', gMeme)
 
   changeColorInput()
   displayFontSize()
@@ -40,20 +49,22 @@ function resizeCanvas() {
 }
 
 function drawImg(containerWidth) {
-  console.log(gIsSelected)
+  // console.log(loadFromStorage('currentMeme'))
 
   if (loadFromStorage('selected') !== true) {
     if (loadFromStorage('currentMeme')) {
-      gMeme = loadFromStorage('currentMeme')
+      // gMeme = loadFromStorage('currentMeme')
     } else {
       gMeme = createMeme()
       gCurrentMeme = gMeme
     }
   } else {
+    console.log(gMeme)
     gMeme = loadFromStorage('selectedMeme')
-    gCurrentMeme = gMeme
+    // gCurrentMeme = gMeme
+    saveToStorage('currentMeme', gMeme)
   }
-  //   saveToStorage('currentMeme', gCurrentMeme)
+
   const img = new Image()
   if (!containerWidth) containerWidth = img.naturalWidth
   console.log(gMeme)
@@ -62,49 +73,32 @@ function drawImg(containerWidth) {
   //   img.src = `meme-imgs/${selectedImgId}.jpg`
   console.log(img)
 
+  const { selectedLineIdx } = gMeme
+
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, containerWidth, containerWidth)
-    addText()
+    addTextt(selectedLineIdx)
   }
+  saveToStorage('currentMeme', gMeme)
 }
 
-function addText(x = gCanvasMiddle, y = 100) {
-  if (gMeme.lines.length > 1) {
-    getLineOption(1)
-  }
-
-  console.log(gText)
-
+function addText(y = 100) {
   gCtx.lineWidth = 3
   gCtx.strokeStyle = gColor
-  //   const elColorSelect = document.querySelector('.color-select')
-  //   elColorSelect.value = gColor
 
   gCtx.fillStyle = gFillColor
-  //   const elColorFillSelect = document.querySelector('.fill-color-select')
-  //   elColorFillSelect.value = gFillColor
 
   gCtx.font = `${gFontSize}px Arial Black`
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'middle'
 
-  gCtx.fillText(gText, x, y)
-  gCtx.strokeText(gText, x, y)
-
-  const { selectedLineIdx } = gMeme
-
-  console.log(selectedLineIdx)
-
-  gMeme.lines[selectedLineIdx].txt = gText
-  gMeme.lines[selectedLineIdx].size = gFontSize
-  gMeme.lines[selectedLineIdx].color = gFillColor
-
-  console.log(gMeme)
+  gCtx.fillText(gText, gCanvasMiddle, y)
+  gCtx.strokeText(gText, gCanvasMiddle, y)
 }
 
 function clearCanvas() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-  gMeme = loadFromStorage('currentMeme')
+  // gMeme = loadFromStorage('currentMeme')
 }
 
 function onChangeMemeText() {
@@ -112,12 +106,14 @@ function onChangeMemeText() {
   //   console.log(gMeme)
   //   drawImg()
 
+  const { selectedLineIdx } = gMeme
+  console.log(selectedLineIdx)
   clearCanvas()
 
   const elInput = document.querySelector('.text')
-  gMeme.lines.txt = elInput.value
-  gText = elInput.value
-  console.log(gMeme.lines.txt)
+
+  gMeme.lines[selectedLineIdx].txt = elInput.value
+  console.log(gMeme.lines[selectedLineIdx].txt)
 
   drawImg(gCanvasContainerWidth)
   //   addText(elInput.value)
@@ -132,7 +128,9 @@ function onDownloadMeme(elLink) {
 
 function onClearCanvas() {
   clearCanvas()
+  const { selectedLineIdx } = gMeme
   gText = ''
+  gMeme.lines[selectedLineIdx].txt = ''
   drawImg(gCanvasContainerWidth)
 
   const elTextInput = document.querySelector('.text')
@@ -146,14 +144,16 @@ function changeColorInput() {
 
 function onChangeColor(elColor) {
   gFillColor = elColor.value
-  addText()
+  const { selectedLineIdx } = gMeme
+  gMeme.lines[selectedLineIdx].color = gFillColor
+  addTextt(selectedLineIdx)
 }
 
 function onChangeSize(elBtn) {
   const operator = elBtn.id
-  console.log(operator)
 
-  console.log(gFontSize)
+  const { selectedLineIdx } = gMeme
+  gFontSize = gMeme.lines[selectedLineIdx].size
   switch (operator) {
     case 'increase':
       if (gFontSize >= 205) return
@@ -166,9 +166,10 @@ function onChangeSize(elBtn) {
   }
   console.log(gFontSize)
 
+  gMeme.lines[selectedLineIdx].size = +gFontSize
   clearCanvas()
   drawImg(gCanvasContainerWidth)
-  addText()
+  // addText()
 
   const elInputRange = document.querySelector('.size-range')
   elInputRange.value = gFontSize
@@ -177,30 +178,32 @@ function onChangeSize(elBtn) {
 }
 
 function onChangeSizeRange(elInputRange) {
+  const { selectedLineIdx } = gMeme
   const fontSize = elInputRange.value
+  gMeme.lines[selectedLineIdx].size = +fontSize
   console.log(fontSize)
-  gFontSize = +fontSize
   clearCanvas()
   drawImg(gCanvasContainerWidth)
-  addText()
+  // addText()
 
   displayFontSize()
   const elSizeDisplay = document.querySelector('.font-size-display')
-  elSizeDisplay.innerText = gFontSize
+  elSizeDisplay.innerText = gMeme.lines[selectedLineIdx].size
 }
 
 function displayFontSize() {
+  const { selectedLineIdx } = gMeme
   const elInputRange = document.querySelector('.size-range')
-  elInputRange.title = gFontSize
+  elInputRange.title = gMeme.lines[selectedLineIdx].size
 }
 
 function onAddLine() {
   const line = createLine()
 
-  gMeme.lines.push(createLine())
+  gMeme.lines.push(line)
 
   getLineOption(1)
-  addText(gCanvasMiddle, gCanvasContainerWidth - 100)
+  addText(gCanvasContainerWidth - 100)
 }
 
 function getLineOption(lineIdx) {
@@ -208,4 +211,24 @@ function getLineOption(lineIdx) {
   gFontSize = gMeme.lines[lineIdx].size
 
   gFillColor = gMeme.lines[lineIdx].color
+}
+
+function renderMeme() {}
+
+function addTextt(line) {
+  console.log(gMeme.lines[line])
+  let y
+  if (line === 0) y = 100
+  else y = gCanvasContainerWidth - 100
+  gCtx.lineWidth = 3
+  gCtx.strokeStyle = gColor
+
+  gCtx.fillStyle = gMeme.lines[line].color
+
+  gCtx.font = `${gMeme.lines[line].size}px Arial Black`
+  gCtx.textAlign = 'center'
+  gCtx.textBaseline = 'middle'
+
+  gCtx.fillText(gMeme.lines[line].txt, gCanvasMiddle, y)
+  gCtx.strokeText(gMeme.lines[line].txt, gCanvasMiddle, y)
 }

@@ -95,7 +95,7 @@ let gImgs = [
   },
 ]
 
-let gMeme
+let gMeme = createMeme()
 
 let gKeywordSearchCountMap = { funny: 10, cute: 12, sarcasm: 5 }
 
@@ -111,9 +111,9 @@ function createMeme(id = getRandomIntInclusive(1, gImgs.length)) {
     selectedLineIdx: 0,
     lines: [
       {
-        txt: 'Insert Txt',
-        size: 20,
-        color: 'red',
+        txt: 'Hello',
+        size: 120,
+        color: '#ffffff',
       },
     ],
   }
@@ -135,3 +135,7 @@ function createLine() {
 //   const meme = gImgs.find((img) => meme.id === img.id)
 //   return meme
 // }
+
+function getMeme() {
+  return gMeme
+}
