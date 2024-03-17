@@ -1,11 +1,20 @@
 
-
+.generate-container{
+    gap: 10px;
+}
 
 .canvas-container{
 
 width: minmax(100px, 200px);
 
-/* position: absolute; */
+/* border-top: 4px dashed red; */
+
+
+position: relative;
+
+margin: 50px;
+
+box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
 }
 
@@ -65,9 +74,9 @@ canvas{
 
     background-color: none;
 
-    border: 4px dashed rgba(255, 0, 0, 0.59);
+    border: 5px dashed rgb(255, 0, 0);
 
-    position: relative;
+    position: absolute;
 
     z-index: 20;
 
@@ -75,45 +84,10 @@ canvas{
 
     transform: translate(-50%, -50%);
 
-    bottom: calc(80vh - 250px);
-}
-/* 
-@media (min-width: 1025px) {
-    .line-select{
-        width: 60%;
-        
-        margin-left: 50%;
-        
-        transform: translate(-50%, -50%);
-        
-        bottom: 900px
-        
-        
-    }
-}
+    /* top: 100px; */
 
-@media (min-width: 1025px){
-    .line-select{
-        /* height: 40vh; */
-        bottom: calc(70vh + 150px)
-
-    }
+    bottom: -50px;
+    
+    display: none;
+    /* bottom: calc(80vh - 250px); */
 }
-
-@media(max-width: 1500px){
-    .line-select{
-        /* height: 40vh; */
-        bottom: calc(60vh + 100px)
-    
-    }
-    
-}
-
-@media(max-width: 800px){
-    .line-select{
-        /* height: 40vh; */
-        bottom: calc(40vh + 80px)
-    
-    }
-    
-} */

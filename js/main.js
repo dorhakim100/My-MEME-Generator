@@ -185,6 +185,8 @@ function onClearCanvas() {
 }
 
 function changeColorInput() {
+  const { selectedLineIdx } = gMeme
+  gFillColor = gMeme.lines[selectedLineIdx].color
   const elColorInput = document.querySelector('.color')
   elColorInput.value = gFillColor
 }
@@ -255,6 +257,7 @@ function onAddLine() {
   // getLineOption(1)
   // addText(gCanvasContainerWidth - 100)
   addTextt(1)
+  onSwitchLine()
 }
 
 function getLineOption(lineIdx) {
@@ -275,9 +278,23 @@ function onSwitchLine() {
 
 function switchLine() {
   const { selectedLineIdx } = gMeme
-  selectedLineIdx === 0
-    ? (gMeme.selectedLineIdx = 1)
-    : (gMeme.selectedLineIdx = 0)
+  const elLineBorder = document.querySelector('.line-select')
+  if (selectedLineIdx === 0) {
+    gMeme.selectedLineIdx = 1
+
+    changeColorInput()
+    console.log(elLineBorder.style.top)
+    console.log(elLineBorder.style.bottom)
+    elLineBorder.style.display = 'block'
+    elLineBorder.style.top = ''
+    elLineBorder.style.bottom = '-50px'
+  } else {
+    gMeme.selectedLineIdx = 0
+
+    changeColorInput()
+
+    elLineBorder.style.top = '100px'
+  }
 }
 
 function copyOtherLine() {
