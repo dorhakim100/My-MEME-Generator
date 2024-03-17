@@ -1,9 +1,11 @@
 
 
+
 .canvas-container{
 
 width: minmax(100px, 200px);
 
+/* position: absolute; */
 /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
 }
 
@@ -53,3 +55,65 @@ width: minmax(100px, 200px);
     
 }
 
+canvas{
+    /* position: absolute; */
+}
+
+.line-select{
+    height: 200px;
+    width: 85%;
+
+    background-color: none;
+
+    border: 4px dashed rgba(255, 0, 0, 0.59);
+
+    position: relative;
+
+    z-index: 20;
+
+    margin-left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    bottom: calc(80vh - 250px);
+}
+/* 
+@media (min-width: 1025px) {
+    .line-select{
+        width: 60%;
+        
+        margin-left: 50%;
+        
+        transform: translate(-50%, -50%);
+        
+        bottom: 900px
+        
+        
+    }
+}
+
+@media (min-width: 1025px){
+    .line-select{
+        /* height: 40vh; */
+        bottom: calc(70vh + 150px)
+
+    }
+}
+
+@media(max-width: 1500px){
+    .line-select{
+        /* height: 40vh; */
+        bottom: calc(60vh + 100px)
+    
+    }
+    
+}
+
+@media(max-width: 800px){
+    .line-select{
+        /* height: 40vh; */
+        bottom: calc(40vh + 80px)
+    
+    }
+    
+} */

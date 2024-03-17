@@ -12,4 +12,23 @@
 
     }
 
+    .line-select{
+        height: 200px;
+        width: 200px;
+    
+        background-color: none;
+    
+        border: 4px dashed rgba(255, 0, 0, 0.59);
+    
+        position: fixed;
+    
+        z-index: 20;
+    
+        margin-left: 25%;
+    
+        transform: translate(-50%, -50%);
+    
+        bottom: calc(80vh - 250px);
+    }
+
 }

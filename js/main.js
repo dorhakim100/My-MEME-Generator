@@ -14,6 +14,9 @@ let gCurrentMeme
 let gCanvasMiddle
 let gCanvasContainerWidth
 
+let gOtherLine
+let isOther = false
+
 // gMeme = loadFromStorage('currentMeme')
 // localStorage.removeItem('currentMeme')
 function init() {
@@ -80,24 +83,63 @@ function drawImg(containerWidth) {
 
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, containerWidth, containerWidth)
+    if (gMeme.lines.length > 1) {
+      const otherLine = getOtherLineIdx()
+      isOther = true
+      console.log(otherLine)
+      addTextt(otherLine)
+    }
     addTextt(selectedLineIdx)
   }
   saveToStorage('currentMeme', gMeme)
 }
 
-function addText(y = 100) {
+function addTextt(line) {
+  if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
+  console.log(line)
+  let y
+  if (line === 0) y = 100
+  else y = gCanvasContainerWidth - 100
   gCtx.lineWidth = 3
   gCtx.strokeStyle = gColor
 
-  gCtx.fillStyle = gFillColor
-
-  gCtx.font = `${gFontSize}px Arial Black`
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'middle'
 
-  gCtx.fillText(gText, gCanvasMiddle, y)
-  gCtx.strokeText(gText, gCanvasMiddle, y)
+  if (isOther) {
+    const otherLine = getOtherLineIdx()
+
+    gCtx.font = `${gMeme.lines[otherLine].size}px Arial Black`
+
+    gCtx.fillStyle = gMeme.lines[otherLine].color
+
+    gCtx.fillText(gMeme.lines[otherLine].txt, gCanvasMiddle, y)
+    gCtx.strokeText(gMeme.lines[otherLine].txt, gCanvasMiddle, y)
+
+    isOther = false
+  }
+  console.log(gMeme.lines[line])
+  gCtx.font = `${gMeme.lines[line].size}px Arial Black`
+
+  gCtx.fillStyle = gMeme.lines[line].color
+
+  gCtx.fillText(gMeme.lines[line].txt, gCanvasMiddle, y)
+  gCtx.strokeText(gMeme.lines[line].txt, gCanvasMiddle, y)
 }
+
+// function addText(y = 100) {
+//   gCtx.lineWidth = 3
+//   gCtx.strokeStyle = gColor
+
+//   gCtx.fillStyle = gFillColor
+
+//   gCtx.font = `${gFontSize}px Arial Black`
+//   gCtx.textAlign = 'center'
+//   gCtx.textBaseline = 'middle'
+
+//   gCtx.fillText(gText, gCanvasMiddle, y)
+//   gCtx.strokeText(gText, gCanvasMiddle, y)
+// }
 
 function clearCanvas() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
@@ -151,6 +193,7 @@ function onChangeColor(elColor) {
   gFillColor = elColor.value
   const { selectedLineIdx } = gMeme
   gMeme.lines[selectedLineIdx].color = gFillColor
+  console.log(gMeme.lines[selectedLineIdx])
   addTextt(selectedLineIdx)
 }
 
@@ -209,8 +252,9 @@ function onAddLine() {
 
   gMeme.lines.push(line)
 
-  getLineOption(1)
-  addText(gCanvasContainerWidth - 100)
+  // getLineOption(1)
+  // addText(gCanvasContainerWidth - 100)
+  addTextt(1)
 }
 
 function getLineOption(lineIdx) {
@@ -222,21 +266,32 @@ function getLineOption(lineIdx) {
 
 function renderMeme() {}
 
-function addTextt(line) {
-  if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
-  console.log(gMeme.lines[line])
-  let y
-  if (line === 0) y = 100
-  else y = gCanvasContainerWidth - 100
-  gCtx.lineWidth = 3
-  gCtx.strokeStyle = gColor
+function onSwitchLine() {
+  if (gMeme.lines.length === 1) return
+  console.log(gMeme.selectedLineIdx)
+  switchLine()
+  console.log(gMeme.selectedLineIdx)
+}
 
-  gCtx.fillStyle = gMeme.lines[line].color
+function switchLine() {
+  const { selectedLineIdx } = gMeme
+  selectedLineIdx === 0
+    ? (gMeme.selectedLineIdx = 1)
+    : (gMeme.selectedLineIdx = 0)
+}
 
-  gCtx.font = `${gMeme.lines[line].size}px Arial Black`
-  gCtx.textAlign = 'center'
-  gCtx.textBaseline = 'middle'
+function copyOtherLine() {
+  let otherLine
+  const { selectedLineIdx } = gMeme
+  selectedLineIdx === 0 ? (otherLine = 1) : (otherLine = 0)
+  console.log(gMeme.lines[otherLine])
 
-  gCtx.fillText(gMeme.lines[line].txt, gCanvasMiddle, y)
-  gCtx.strokeText(gMeme.lines[line].txt, gCanvasMiddle, y)
+  gOtherLine = otherLine
+}
+
+function getOtherLineIdx() {
+  let otherLine
+  const { selectedLineIdx } = gMeme
+  selectedLineIdx === 0 ? (otherLine = 1) : (otherLine = 0)
+  return otherLine
 }
