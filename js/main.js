@@ -312,3 +312,19 @@ function getOtherLineIdx() {
   selectedLineIdx === 0 ? (otherLine = 1) : (otherLine = 0)
   return otherLine
 }
+
+function onCanvasClick(ev) {
+  if (gMeme.lines.length === 1) return
+  const x = ev.x
+  const y = ev.y
+
+  const { selectedLineIdx } = gMeme
+
+  console.log(gCanvasMiddle)
+  if (y < gCanvasMiddle && selectedLineIdx === 1) {
+    switchLine()
+  } else if (y > gCanvasMiddle && selectedLineIdx === 0) {
+    switchLine()
+  }
+  // console.log(ev.y)
+}
