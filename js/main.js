@@ -17,6 +17,8 @@ let gCanvasContainerWidth
 let gOtherLine
 let isOther = false
 
+let gTextAlign = 'center'
+
 // gMeme = loadFromStorage('currentMeme')
 // localStorage.removeItem('currentMeme')
 function init() {
@@ -103,9 +105,9 @@ function addTextt(line) {
   gCtx.lineWidth = 3
   gCtx.strokeStyle = gColor
 
-  gCtx.textAlign = 'center'
   gCtx.textBaseline = 'middle'
 
+  gCtx.textAlign = gTextAlign
   if (isOther) {
     const otherLine = getOtherLineIdx()
 
@@ -327,4 +329,21 @@ function onCanvasClick(ev) {
     switchLine()
   }
   // console.log(ev.y)
+}
+
+function onAlignText(elInput) {
+  console.log(elInput.value)
+  switch (elInput.value) {
+    case 'start':
+      gTextAlign = 'end'
+      break
+    case 'center':
+      gTextAlign = 'center'
+      break
+    case 'end':
+      gTextAlign = 'start'
+      break
+  }
+  clearCanvas()
+  drawImg(gCanvasContainerWidth)
 }

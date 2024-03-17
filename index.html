@@ -61,7 +61,19 @@
             <label for="color">Color:</label>
             <input class="input color" onchange="onChangeColor(this)" type="color" name="" id="">
             
-        </div>
+            
+            <div style="display: inline-block;">
+                <label for="align">Text Align:</label>
+                <form>
+                    <input onchange="onAlignText(this)" type="radio" name="text-align" value="start">
+                    <label for="start">Start</label>
+                    <input onchange="onAlignText(this)" type="radio" name="text-align" value="center">
+                    <label for="center">Center</label>
+                    <input onchange="onAlignText(this)" type="radio" name="text-align" value="end">
+                    <label for="end">End</label>
+                </form>
+            </div>
+            </div>
     </div>
     
     
