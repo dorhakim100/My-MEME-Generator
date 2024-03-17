@@ -13,7 +13,31 @@ body{
 }
 
 .nav-container{
+    /* position: fixed;
+    top: 0px;
+
+    z-index: 22; */
+
     background-color: rgb(179, 198, 255);
+
+    border-radius: 5px;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+@media(max-width:1025px){
+    .nav-container{
+        position: fixed;
+        top: 0px;
+    
+        z-index: 22;
+        width: 90vw;
+    }
+}
+
+ul:hover{
+    border-radius: 20px;
+
 }
 
 ul {
