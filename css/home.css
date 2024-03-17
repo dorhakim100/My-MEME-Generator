@@ -13,6 +13,7 @@ width: minmax(100px, 200px);
 position: relative;
 
 margin: 50px;
+margin-top: 0px;
 
 box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
@@ -21,7 +22,7 @@ box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2p
 .user-interface{
     text-align: center;
 
-    background-color: aquamarine;
+    background-color: #92A8D1;
     /* border: 2px solid green; */
 
     align-self: center;
@@ -43,19 +44,24 @@ box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2p
     
 }
 
+.download-btn:hover{
+    text-shadow: rgba(0, 242, 255, 0.661) 1px 0 10px;
+
+}
+
 .text-container{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items: center;
     justify-items: center;
 
-    border: 2px solid green;
+    /* border: 2px solid green; */
 }
 
 .size-container{
     align-self: center;
 
-    border: 2px solid green;
+    /* border: 2px solid green; */
     padding: 5px;
 }
 

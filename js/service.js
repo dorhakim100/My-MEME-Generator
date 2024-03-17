@@ -2,6 +2,8 @@
 
 let gId = 0
 
+let gCanvasMiddle
+
 let gImgs = [
   {
     id: ++gId,
@@ -114,6 +116,7 @@ function createMeme(id = getRandomIntInclusive(1, gImgs.length)) {
         txt: 'Hello',
         size: 120,
         color: '#ffffff',
+        position: { x: gCanvasMiddle, y: 100 },
       },
     ],
   }
@@ -126,6 +129,7 @@ function createLine() {
     txt: 'Insert Txt',
     size: 80,
     color: '#ff0000',
+    position: { x: gCanvasMiddle, y: gCanvasContainerWidth - 100 },
   }
 
   return line
@@ -138,4 +142,17 @@ function createLine() {
 
 function getMeme() {
   return gMeme
+}
+
+function resizeCanvas() {
+  const gElContainer = document.querySelector('.canvas-container')
+  // Changing the canvas dimension clears the canvas
+  gElCanvas.width = gElContainer.clientWidth
+  gElCanvas.height = gElContainer.clientWidth
+  gCanvasContainerWidth = gElContainer.clientWidth
+
+  gCanvasMiddle = gElCanvas.width / 2
+  console.log(gElContainer)
+  console.log(gElCanvas.width, gElCanvas.height)
+  drawImg(gCanvasContainerWidth)
 }

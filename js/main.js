@@ -11,7 +11,7 @@ let gFillColor = '#ffffff'
 
 let gCurrentMeme
 
-let gCanvasMiddle
+// let gCanvasMiddle
 let gCanvasContainerWidth
 
 let gOtherLine
@@ -38,18 +38,18 @@ function init() {
   displayFontSize()
 }
 
-function resizeCanvas() {
-  const gElContainer = document.querySelector('.canvas-container')
-  // Changing the canvas dimension clears the canvas
-  gElCanvas.width = gElContainer.clientWidth
-  gElCanvas.height = gElContainer.clientWidth
-  gCanvasContainerWidth = gElContainer.clientWidth
+// function resizeCanvas() {
+//   const gElContainer = document.querySelector('.canvas-container')
+//   // Changing the canvas dimension clears the canvas
+//   gElCanvas.width = gElContainer.clientWidth
+//   gElCanvas.height = gElContainer.clientWidth
+//   gCanvasContainerWidth = gElContainer.clientWidth
 
-  gCanvasMiddle = gElCanvas.width / 2
-  console.log(gElContainer)
-  console.log(gElCanvas.width, gElCanvas.height)
-  drawImg(gCanvasContainerWidth)
-}
+//   gCanvasMiddle = gElCanvas.width / 2
+//   console.log(gElContainer)
+//   console.log(gElCanvas.width, gElCanvas.height)
+//   drawImg(gCanvasContainerWidth)
+// }
 
 function drawImg(containerWidth) {
   console.log(loadFromStorage('selected'))
