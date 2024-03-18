@@ -3,6 +3,54 @@
     gap: 10px;
 }
 
+.screen{
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    background-color: rgba(95, 95, 95, 0.601);
+
+    z-index: 2;
+
+    display: none;
+}
+
+dialog{
+    top: 100px;
+
+    border: 2px solid black;
+
+    z-index: 3;
+
+    width: 80vw;
+}
+
+
+
+.x-btn{
+    position: fixed;
+
+    border-radius: 50%;
+
+    height: 30px;
+    width: 30px;
+
+    font-weight: bold;
+
+    background-color: #92A8D1;
+    color: aliceblue;
+
+    cursor: pointer;
+}
+
+.x-btn:hover{
+    background-color: #900b0b;
+    color: aliceblue;
+}
+
 .canvas-container{
 
 width: minmax(100px, 200px);
@@ -31,6 +79,8 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
     align-self: center;
 
     border-radius: 20px;
+
+    margin: 50px;
 
     height: 300px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -94,7 +144,7 @@ canvas{
 
     position: absolute;
 
-    z-index: 20;
+    z-index: 2;
 
     margin-left: 50%;
 

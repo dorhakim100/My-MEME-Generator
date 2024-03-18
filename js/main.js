@@ -30,6 +30,10 @@ function init() {
   //   gMeme = createMeme()
   //   saveToStorage('currentMeme', gMeme)
   // }
+  const elImgContainer = document.querySelector('.gallery-container')
+
+  elImgContainer.innerHTML = getGallerySrc().join('')
+
   gElCanvas = document.querySelector('canvas')
   gCtx = gElCanvas.getContext('2d')
   resizeCanvas()
@@ -346,4 +350,42 @@ function onAlignText(elInput) {
   }
   clearCanvas()
   drawImg(gCanvasContainerWidth)
+}
+
+function onRenderNewMeme() {
+  clearFromStorage('selected')
+
+  window.location.reload()
+}
+
+function onOpenGallery() {
+  const galleryClass = 'gallery'
+
+  openModal(galleryClass)
+}
+
+function openModal(elClass) {
+  const elDialog = document.querySelector(`.${elClass}`)
+
+  elDialog.showModal()
+
+  const elScreen = document.querySelector('.screen')
+
+  elScreen.style.display = 'block'
+}
+
+function onCloseModal() {
+  const galleryClass = 'gallery'
+
+  closeModal(galleryClass)
+}
+
+function closeModal(elClass) {
+  const elDialog = document.querySelector(`.${elClass}`)
+
+  elDialog.close()
+
+  const elScreen = document.querySelector('.screen')
+
+  elScreen.style.display = 'none'
 }

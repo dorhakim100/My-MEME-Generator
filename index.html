@@ -9,21 +9,40 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/gallery.css">
 
 </head>
 
 <body onload="init()" onresize="resizeCanvas()">
 
+    <div class="screen">
+
+    </div>
     <nav class="nav-container">
         <ul class="nav-list">
-            <li><a href="http://127.0.0.1:5500/index.html" onclick="clearFromStorage('selected')">Home</a></li>
-            <li><a href="http://127.0.0.1:5500/gallery.html">Gallery</a></li>
+            <li onclick="onRenderNewMeme()" title="Generate New Meme">Random Meme</li>
+            <li onclick="onOpenGallery()">Gallery</li>
             <li><a href="http://127.0.0.1:5500/about.html">About</a></li>
         </ul>
     </nav>
+    <!-- <dialog open>
+        <p>Greetings, one and all!</p>
+        <form method="dialog">
+          <button>OK</button>
+        </form>
+      </dialog> -->
+      <dialog class="dialog gallery">
+        <button onclick="onCloseModal()" class="x-btn">X</button>
+          <div class="gallery-container">
+              <!-- <img src="meme-imgs/1.jpg" alt="" onclick="onSelectMEME()" style="cursor: pointer;"> -->
+          </div>
+      </dialog>
 
 <h1>My MEME Generator</h1>
     
+
+
+
     <div class="generator-container">
 
         <div class="canvas-container" onclick="onCanvasClick(event)">
@@ -80,6 +99,7 @@
     <script src="js/storage.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/service.js"></script>
+    <script src="js/gallery.js"></script>
     <script src="js/main.js"></script>
 </body>
 
