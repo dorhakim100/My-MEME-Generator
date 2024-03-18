@@ -256,6 +256,9 @@ function displayFontSize() {
 }
 
 function onAddLine() {
+  const elCanvas = document.querySelector('canvas')
+  elCanvas.style.cursor = 'pointer'
+
   const line = createLine()
 
   gMeme.lines.push(line)

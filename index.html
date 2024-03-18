@@ -71,14 +71,18 @@
                     <button onclick="onSwitchLine()">Switch Line</button>
                 </div>
                 <div class="size-container">
-                    <div class="font-size-display">120</div>
-                    <button onclick="onChangeSize(this)" id="decrease"><img src="helpers/decrease-font.png" alt="" style="width: 20px; background-color: none;"></button>
+                    <button onclick="onChangeSize(this)" class="decrease" id="decrease"><img src="helpers/decrease-font.png" alt="" style="width: 20px; background-color: none;"></button>
                     <input onchange="onChangeSizeRange(this)" class="input size-range" type="range" min="35" max="205" title="">
-                    <button onclick="onChangeSize(this)" id="increase"><img src="helpers/increase-font.png" alt="" style="width: 20px; background-color: none;"></button>
+                    <button onclick="onChangeSize(this)" class="increase" id="increase"><img src="helpers/increase-font.png" alt="" style="width: 20px; background-color: none;"></button>
+                    <div class="font-size-display">120</div>
                 </div>
             </div>
-            <label for="color">Color:</label>
-            <input class="input color" onchange="onChangeColor(this)" type="color" name="" id="">
+
+            <div>
+                <label for="color">Color:</label>
+                <input class="input color" onchange="onChangeColor(this)" type="color" name="" id="">
+
+            </div>
             
             
             <div style="display: inline-block;">

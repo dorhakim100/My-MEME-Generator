@@ -4,7 +4,8 @@
 display: flex;
 flex-wrap: wrap;
 
-border: 10px solid black;
+border: 5px solid rgb(12, 73, 120);
+border-radius: 10px;
 
 margin: 70px;
 }
@@ -16,6 +17,11 @@ margin: 70px;
     width: 200px;
     height: 200px;
     height: fit-content;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
 }
 .gallery-container > img:nth-child(3n){
@@ -55,7 +61,7 @@ margin: 70px;
         margin: 10px;
     }
 
-    .gallery-container > img{
+    .gallery-container > img:nth-child(1n){
         padding: 5px;
         flex-grow: 1;
     

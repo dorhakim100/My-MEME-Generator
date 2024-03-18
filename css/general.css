@@ -98,9 +98,9 @@ font-family: h1;
 
 @font-face {
     font-family: body;
-    src: url(/fonts/SuperFoods-2OxXo.ttf);
+    src: url('SuperFoods-2OxXo.ttf');
 }
 @font-face {
     font-family: h1;
-    src: url(/fonts/Bigparty4blue-x3W8q.ttf);
+    src: url('Bigparty4blue-x3W8q.ttf');
 }
