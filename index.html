@@ -85,18 +85,34 @@
             </div>
             
             
-            <div style="display: inline-block;">
-                <label for="align">Text Align:</label>
-                <form>
-                    <input onchange="onAlignText(this)" type="radio" name="text-align" value="start">
-                    <label for="start">Start</label>
-                    <input onchange="onAlignText(this)" type="radio" name="text-align" value="center">
-                    <label for="center">Center</label>
-                    <input onchange="onAlignText(this)" type="radio" name="text-align" value="end">
-                    <label for="end">End</label>
-                </form>
+            <div class="adjust-text-container" style="display: inline-block;">
+
+                <div class="text-align">
+                    <label for="align">Text Align:</label>
+                    <form>
+                        <input onchange="onAlignText(this)" type="radio" name="text-align" value="start">
+                        <label for="start">Start</label>
+                        <input onchange="onAlignText(this)" type="radio" name="text-align" value="center">
+                        <label for="center">Center</label>
+                        <input onchange="onAlignText(this)" type="radio" name="text-align" value="end">
+                        <label for="end">End</label>
+                    </form>
+                </div>
+
+                <div class="adjust-font">
+                    <label for="font-style">Font Style:</label>
+                    <input list="font-styles" name="font-style" id="font-style" onchange="onChangeFontStyle(this)">
+
+                    <datalist id="font-styles">
+                    <option value="Classic Meme">
+                    <option value="Monospace">
+                    <option value="Verdana">
+                    <option value="Courier">
+                    </datalist>
+                </div>
+
             </div>
-            </div>
+        </div>
     </div>
     
     

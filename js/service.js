@@ -154,7 +154,7 @@ function resizeCanvas() {
   gCanvasMiddle = gElCanvas.width / 2
   console.log(gElContainer)
   console.log(gElCanvas.width, gElCanvas.height)
-  drawImg(gCanvasContainerWidth)
+  renderMeme(gCanvasContainerWidth)
 }
 
 // Gallery

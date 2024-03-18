@@ -19,6 +19,8 @@ let isOther = false
 
 let gTextAlign = 'center'
 
+let gFontStyle = 'Arial Black'
+
 // gMeme = loadFromStorage('currentMeme')
 // localStorage.removeItem('currentMeme')
 function init() {
@@ -38,26 +40,13 @@ function init() {
   gCtx = gElCanvas.getContext('2d')
   resizeCanvas()
 
-  drawImg()
+  renderMeme()
 
   changeColorInput()
   displayFontSize()
 }
 
-// function resizeCanvas() {
-//   const gElContainer = document.querySelector('.canvas-container')
-//   // Changing the canvas dimension clears the canvas
-//   gElCanvas.width = gElContainer.clientWidth
-//   gElCanvas.height = gElContainer.clientWidth
-//   gCanvasContainerWidth = gElContainer.clientWidth
-
-//   gCanvasMiddle = gElCanvas.width / 2
-//   console.log(gElContainer)
-//   console.log(gElCanvas.width, gElCanvas.height)
-//   drawImg(gCanvasContainerWidth)
-// }
-
-function drawImg(containerWidth) {
+function renderMeme(containerWidth) {
   console.log(loadFromStorage('selected'))
 
   if (loadFromStorage('selected') !== true) {
@@ -93,14 +82,14 @@ function drawImg(containerWidth) {
       const otherLine = getOtherLineIdx()
       isOther = true
       console.log(otherLine)
-      addTextt(otherLine)
+      addText(otherLine)
     }
-    addTextt(selectedLineIdx)
+    addText(selectedLineIdx)
   }
   saveToStorage('currentMeme', gMeme)
 }
 
-function addTextt(line) {
+function addText(line) {
   if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
   console.log(line)
   let y
@@ -115,7 +104,7 @@ function addTextt(line) {
   if (isOther) {
     const otherLine = getOtherLineIdx()
 
-    gCtx.font = `${gMeme.lines[otherLine].size}px Arial Black`
+    gCtx.font = `${gMeme.lines[otherLine].size}px ${gFontStyle}`
 
     gCtx.fillStyle = gMeme.lines[otherLine].color
 
@@ -125,7 +114,7 @@ function addTextt(line) {
     isOther = false
   }
   console.log(gMeme.lines[line])
-  gCtx.font = `${gMeme.lines[line].size}px Arial Black`
+  gCtx.font = `${gMeme.lines[line].size}px ${gFontStyle}`
 
   gCtx.fillStyle = gMeme.lines[line].color
 
@@ -168,7 +157,7 @@ function onChangeMemeText() {
   gMeme.lines[selectedLineIdx].txt = elInput.value
   console.log(gMeme.lines[selectedLineIdx].txt)
 
-  drawImg(gCanvasContainerWidth)
+  renderMeme(gCanvasContainerWidth)
   //   addText(elInput.value)
 }
 
@@ -184,7 +173,7 @@ function onClearCanvas() {
   const { selectedLineIdx } = gMeme
   gText = ''
   gMeme.lines[selectedLineIdx].txt = ''
-  drawImg(gCanvasContainerWidth)
+  renderMeme(gCanvasContainerWidth)
 
   const elTextInput = document.querySelector('.text')
   elTextInput.value = ''
@@ -202,7 +191,7 @@ function onChangeColor(elColor) {
   const { selectedLineIdx } = gMeme
   gMeme.lines[selectedLineIdx].color = gFillColor
   console.log(gMeme.lines[selectedLineIdx])
-  addTextt(selectedLineIdx)
+  addText(selectedLineIdx)
 }
 
 function onChangeSize(elBtn) {
@@ -225,7 +214,7 @@ function onChangeSize(elBtn) {
 
   gMeme.lines[selectedLineIdx].size = +gFontSize
   clearCanvas()
-  drawImg(gCanvasContainerWidth)
+  renderMeme(gCanvasContainerWidth)
   // addText()
 
   const elInputRange = document.querySelector('.size-range')
@@ -241,7 +230,7 @@ function onChangeSizeRange(elInputRange) {
   gMeme.lines[selectedLineIdx].size = +fontSize
   console.log(fontSize)
   clearCanvas()
-  drawImg(gCanvasContainerWidth)
+  renderMeme(gCanvasContainerWidth)
   // addText()
 
   displayFontSize()
@@ -265,7 +254,7 @@ function onAddLine() {
 
   // getLineOption(1)
   // addText(gCanvasContainerWidth - 100)
-  addTextt(1)
+  addText(1)
   onSwitchLine()
 }
 
@@ -275,8 +264,6 @@ function getLineOption(lineIdx) {
 
   gFillColor = gMeme.lines[lineIdx].color
 }
-
-function renderMeme() {}
 
 function onSwitchLine() {
   if (gMeme.lines.length === 1) return
@@ -352,7 +339,7 @@ function onAlignText(elInput) {
       break
   }
   clearCanvas()
-  drawImg(gCanvasContainerWidth)
+  renderMeme(gCanvasContainerWidth)
 }
 
 function onRenderNewMeme() {
@@ -391,4 +378,31 @@ function closeModal(elClass) {
   const elScreen = document.querySelector('.screen')
 
   elScreen.style.display = 'none'
+}
+
+function onChangeFontStyle(elInput) {
+  console.log(elInput.value)
+  const style = elInput.value
+
+  const { selectedLineIdx } = gMeme
+
+  switch (style) {
+    case 'Classic Meme':
+      gFontStyle = 'Arial Black'
+      break
+
+    case 'Monospace':
+      gFontStyle = 'monospace'
+      break
+
+    case 'Verdana':
+      gFontStyle = 'verdana'
+      break
+
+    case 'Courier':
+      gFontStyle = 'courier'
+      break
+  }
+  clearCanvas()
+  renderMeme(gCanvasContainerWidth)
 }
