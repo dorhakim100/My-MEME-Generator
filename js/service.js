@@ -135,11 +135,6 @@ function createLine() {
   return line
 }
 
-// function findMeme(meme) {
-//   const meme = gImgs.find((img) => meme.id === img.id)
-//   return meme
-// }
-
 function getMeme() {
   return gMeme
 }
@@ -164,7 +159,7 @@ function getGallerySrc() {
 
   let strHtmls = imgs.map(
     (img) =>
-      `<img id="${img.id}" onclick="onSelectMEME(this)" src="${img.url}" alt="">`
+      `<img id="${img.id}" onclick="onSelectMEME(this)" src="${img.url}" alt="" style="cursor: pointer;">`
   )
   return strHtmls
 }

@@ -13,10 +13,7 @@ body{
 }
 
 .nav-container{
-    /* position: fixed;
-    top: 0px;
-    
-    z-index: 22; */
+
     
     background-color: rgb(179, 198, 255);
     
@@ -76,7 +73,7 @@ a{
 }
 
 .nav-list > li:hover{
-    /* cursor: pointer; */
+
     background-color: rgb(111, 111, 182);
     text-shadow: rgb(0, 255, 255) 1px 0 10px;
 }
@@ -86,15 +83,17 @@ text-align: center;
 
 font-size: 100px;
 font-family: h1;
-/* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+
+text-shadow: rgb(0, 0, 0) 10px 0 10px;
+background-color: rgba(73, 30, 174, 0.374);
+
+border-radius: 10px;
+
+box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+margin: 80px auto 80px;
 }
 
-/* .logo{
-    flex-grow: 2;
-
-    font-size: 300px;
-
-} */
 
 @font-face {
     font-family: body;

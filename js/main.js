@@ -21,17 +21,7 @@ let gTextAlign = 'center'
 
 let gFontStyle = 'Arial Black'
 
-// gMeme = loadFromStorage('currentMeme')
-// localStorage.removeItem('currentMeme')
 function init() {
-  // if (!loadFromStorage('currentMeme')) {
-  //   createMeme()
-  //   saveToStorage('currentMeme', gMeme)
-  // }
-  // if (!gMeme) {
-  //   gMeme = createMeme()
-  //   saveToStorage('currentMeme', gMeme)
-  // }
   const elImgContainer = document.querySelector('.gallery-container')
 
   elImgContainer.innerHTML = getGallerySrc().join('')
@@ -60,7 +50,6 @@ function renderMeme(containerWidth) {
     console.log(gMeme)
     gMeme = loadFromStorage('selectedMeme')
     console.log(gMeme)
-    // gCurrentMeme = gMeme
     saveToStorage('currentMeme', gMeme)
     saveToStorage('selected', false)
     console.log(loadFromStorage('currentMeme'))
@@ -71,7 +60,6 @@ function renderMeme(containerWidth) {
   console.log(gMeme)
   const { selectedImgId } = gMeme
   img.src = `meme-imgs/${selectedImgId}.jpg`
-  //   img.src = `meme-imgs/${selectedImgId}.jpg`
   console.log(img)
 
   const { selectedLineIdx } = gMeme
@@ -122,31 +110,13 @@ function addText(line) {
   gCtx.strokeText(gMeme.lines[line].txt, gCanvasMiddle, y)
 }
 
-// function addText(y = 100) {
-//   gCtx.lineWidth = 3
-//   gCtx.strokeStyle = gColor
-
-//   gCtx.fillStyle = gFillColor
-
-//   gCtx.font = `${gFontSize}px Arial Black`
-//   gCtx.textAlign = 'center'
-//   gCtx.textBaseline = 'middle'
-
-//   gCtx.fillText(gText, gCanvasMiddle, y)
-//   gCtx.strokeText(gText, gCanvasMiddle, y)
-// }
-
 function clearCanvas() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-  // gMeme = loadFromStorage('currentMeme')
 }
 
 function onChangeMemeText() {
   if (loadFromStorage('selected')) gMeme = loadFromStorage('selectedMeme')
   console.log(gMeme)
-  //   console.log(loadFromStorage('currentMeme'))
-  //   console.log(gMeme)
-  //   drawImg()
 
   const { selectedLineIdx } = gMeme
   console.log(selectedLineIdx)
@@ -158,12 +128,11 @@ function onChangeMemeText() {
   console.log(gMeme.lines[selectedLineIdx].txt)
 
   renderMeme(gCanvasContainerWidth)
-  //   addText(elInput.value)
 }
 
 function onDownloadMeme(elLink) {
   let imgContent
-  // elLink.innerText = 'Download PNG'
+
   imgContent = gElCanvas.toDataURL('image/png')
   elLink.href = imgContent
 }
@@ -252,8 +221,6 @@ function onAddLine() {
 
   gMeme.lines.push(line)
 
-  // getLineOption(1)
-  // addText(gCanvasContainerWidth - 100)
   addText(1)
   onSwitchLine()
 }
@@ -322,7 +289,6 @@ function onCanvasClick(ev) {
   } else if (y > gCanvasMiddle && selectedLineIdx === 0) {
     switchLine()
   }
-  // console.log(ev.y)
 }
 
 function onAlignText(elInput) {
@@ -405,4 +371,8 @@ function onChangeFontStyle(elInput) {
   }
   clearCanvas()
   renderMeme(gCanvasContainerWidth)
+}
+
+function onAboutOpen() {
+  alert('Thank you for using this app')
 }
